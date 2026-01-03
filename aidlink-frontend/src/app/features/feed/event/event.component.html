@@ -1,0 +1,54 @@
+
+@if (eventItem(); as event) {
+  <div class="bg-white border border-gray-200 rounded-lg">
+    <!-- Event Header -->
+    <div class="flex items-center justify-between p-3">
+      <div class="flex items-center">
+        <p-avatar [image]="event.user.avatarUrl" shape="circle"></p-avatar>
+        <span class="font-bold ml-3 text-sm">{{ event.user.name }}</span>
+      </div>
+       <button pButton pRipple type="button" icon="pi pi-ellipsis-h" class="p-button-text p-button-plain text-gray-800"></button>
+    </div>
+
+    <!-- Event Image -->
+    <p-image [src]="event.imageUrl" alt="Event Banner" imageClass="w-full h-auto object-cover"></p-image>
+
+    <!-- Action Bar & Content -->
+    <div class="p-3">
+      <!-- Icons -->
+      <div class="flex justify-between items-center text-2xl">
+        <div class="flex items-center gap-1">
+          <button pButton pRipple type="button" icon="pi pi-heart" class="p-button-text p-button-plain text-gray-800"></button>
+          <button pButton pRipple type="button" icon="pi pi-comment" class="p-button-text p-button-plain text-gray-800"></button>
+          <button pButton pRipple type="button" icon="pi pi-send" class="p-button-text p-button-plain text-gray-800"></button>
+        </div>
+        <button pButton pRipple type="button" icon="pi pi-bookmark" class="p-button-text p-button-plain text-gray-800"></button>
+      </div>
+
+      <!-- Likes -->
+      <div class="font-bold text-sm mt-3">
+        {{ (123).toLocaleString() }} likes
+      </div>
+
+      <!-- Caption -->
+      <div class="mt-1 text-sm">
+        <span class="font-bold mr-1">{{ event.user.name }}</span>
+        <span>Join us for the <span class="font-semibold">{{ event.title }}</span>!</span>
+      </div>
+      <div class="mt-2 text-sm space-y-1">
+          <div class="flex items-center text-gray-700">
+             <i class="pi pi-calendar mr-2"></i> {{ event.date }}
+          </div>
+          <div class="flex items-center text-gray-700">
+             <i class="pi pi-map-marker mr-2"></i> {{ event.location }}
+          </div>
+          <div class="text-gray-600 mt-1">{{ event.description }}</div>
+      </div>
+      
+       <!-- Timestamp -->
+      <div class="text-gray-400 text-xs uppercase mt-3">
+        1 day ago
+      </div>
+    </div>
+  </div>
+}

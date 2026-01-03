@@ -1,0 +1,48 @@
+
+@if (poll(); as p) {
+  <div class="bg-white border border-gray-200 rounded-lg">
+    <!-- Poll Header -->
+    <div class="flex items-center justify-between p-3">
+      <div class="flex items-center">
+        <p-avatar [image]="p.user.avatarUrl" shape="circle"></p-avatar>
+        <span class="font-bold ml-3 text-sm">{{ p.user.name }}</span>
+      </div>
+      <button pButton pRipple type="button" icon="pi pi-ellipsis-h" class="p-button-text p-button-plain text-gray-800"></button>
+    </div>
+
+    <!-- Poll Body -->
+    <div class="px-4 py-4">
+      <h3 class="text-md font-semibold text-gray-800 mb-4">{{ p.question }}</h3>
+      
+      @if (!voted()) {
+        <div class="flex flex-col gap-2">
+          @for (option of p.options; track option.id) {
+            <button pButton pRipple type="button" (click)="selectedOption.set(option); vote()" [label]="option.text" class="p-button-outlined w-full justify-start"></button>
+          }
+        </div>
+      } @else {
+        <div class="flex flex-col gap-3">
+          @for (option of pollWithOptions(); track option.id) {
+            <div class="relative w-full border border-gray-200 rounded-md p-3 overflow-hidden">
+               <div class="absolute top-0 left-0 h-full bg-indigo-100" [style.width.%]="option.percentage"></div>
+               <div class="relative flex justify-between">
+                  <span class="text-sm font-bold text-indigo-800">{{ option.text }}</span>
+                  <span class="text-sm font-semibold text-indigo-800">{{ option.percentage }}%</span>
+               </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Footer with vote count -->
+    <div class="p-3 pt-0">
+        <div class="text-gray-500 text-sm">
+            {{ totalVotes().toLocaleString() }} votes
+        </div>
+         <div class="text-gray-400 text-xs uppercase mt-3">
+            5 hours ago
+        </div>
+    </div>
+  </div>
+}
