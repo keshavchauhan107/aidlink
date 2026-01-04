@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "https://YOUR_BACKEND_URL"
+  apiUrl: "https://aidlink-backend-dkgy.onrender.com"
 };
