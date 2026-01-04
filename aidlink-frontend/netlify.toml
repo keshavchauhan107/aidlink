@@ -1,3 +1,7 @@
+[build]
+  publish = "dist/aidlink"
+  command = "npm run build"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
